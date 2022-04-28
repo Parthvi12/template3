@@ -2,7 +2,7 @@
   "pluginType": "DB",
   "pluginId": "amazons3-plugin",
   "unpublishedAction": {
-    "name": "CreateFile",
+    "name": "Query3",
     "datasource": {
       "pluginId": "amazons3-plugin",
       "messages": [],
@@ -14,19 +14,24 @@
     },
     "pageId": "Conversations",
     "actionConfiguration": {
-      "timeoutInMillisecond": 10000,
+      "timeoutInMillisecond": 100000,
       "paginationType": "NONE",
       "encodeParamsToggle": true,
       "formData": {
+        "body": {
+          "data": "{{FilePicker1.files[0]}}",
+          "viewType": "component",
+          "componentData": "{{FilePicker1.files[0]}}"
+        },
         "bucket": {
           "data": "appsmith-mock",
           "viewType": "component",
           "componentData": "appsmith-mock"
         },
-        "path": {
-          "data": "{{fetchInvestorDetails.data[0]['investorName']}}/{{appsmith.store.filename}}",
+        "command": {
+          "data": "UPLOAD_FILE_FROM_BODY",
           "viewType": "component",
-          "componentData": "{{fetchInvestorDetails.data[0]['investorName']}}/{{appsmith.store.filename}}"
+          "componentData": "UPLOAD_FILE_FROM_BODY"
         },
         "create": {
           "dataType": {
@@ -35,20 +40,15 @@
             "componentData": "YES"
           },
           "expiry": {
-            "data": "{{24*60}}",
+            "data": "5",
             "viewType": "component",
-            "componentData": "{{24*60}}"
+            "componentData": "5"
           }
         },
-        "body": {
-          "data": "{{FilePicker1.files[0]}}",
+        "path": {
+          "data": "testfolder{{FilePicker1.files}}",
           "viewType": "component",
-          "componentData": "{{FilePicker1.files[0]}}"
-        },
-        "command": {
-          "data": "UPLOAD_FILE_FROM_BODY",
-          "viewType": "component",
-          "componentData": "UPLOAD_FILE_FROM_BODY"
+          "componentData": "testfolder{{FilePicker1.files}}"
         }
       }
     },
@@ -59,26 +59,23 @@
       },
       {
         "key": "formData.path.data"
-      },
-      {
-        "key": "formData.create.expiry.data"
       }
     ],
     "isValid": true,
-    "invalids": [],
+    "invalids": [
+      "'Query timeout' field must be an integer between 0 and 60000"
+    ],
     "messages": [],
     "jsonPathKeys": [
-      "24*60",
-      "FilePicker1.files[0]",
-      "appsmith.store.filename",
-      "fetchInvestorDetails.data[0]['investorName']"
+      "FilePicker1.files",
+      "FilePicker1.files[0]"
     ],
     "userSetOnLoad": false,
-    "confirmBeforeExecute": false,
+    "confirmBeforeExecute": true,
     "policies": [],
     "userPermissions": []
   },
-  "id": "Conversations_CreateFile",
+  "id": "Conversations_Query3",
   "deleted": false,
-  "gitSyncId": "61dbc9d66bd5757f166cc898_621c4c7c445a8d746a060e25"
+  "gitSyncId": "61dbc9d66bd5757f166cc898_6218d923445a8d746a05fbbf"
 }

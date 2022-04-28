@@ -23,10 +23,10 @@
           "viewType": "component",
           "componentData": "appsmith-mock"
         },
-        "path": {
-          "data": "{{fetchInvestorDetails.data[0]['investorName']}}/{{appsmith.store.filename}}",
+        "command": {
+          "data": "LIST",
           "viewType": "component",
-          "componentData": "{{fetchInvestorDetails.data[0]['investorName']}}/{{appsmith.store.filename}}"
+          "componentData": "LIST"
         },
         "list": {
           "prefix": {
@@ -84,10 +84,10 @@
             "componentData": "NO"
           }
         },
-        "command": {
-          "data": "LIST",
+        "path": {
+          "data": "{{fetchInvestorDetails.data[0]['investorName']}}/{{appsmith.store.filename}}",
           "viewType": "component",
-          "componentData": "LIST"
+          "componentData": "{{fetchInvestorDetails.data[0]['investorName']}}/{{appsmith.store.filename}}"
         }
       }
     },
